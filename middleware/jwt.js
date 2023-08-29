@@ -5,15 +5,15 @@ const verifyToken = (req, res, next) => {
 
     let token = req.headers['authorization'] ? req.headers['authorization'].split("Bearer ")[1] : null;
 
-    if(!token){
+    if (!token) {
         return res.status(403).json({
             message: "No token provided!"
         })
     }
 
-    const user = jwt.verify(token,config.secret, (err , user) =>{
-        if(err){
-            return res.status(403).json({message: "Unauthorized"})
+    const user = jwt.verify(token, config.secret, (err, user) => {
+        if (err) {
+            return res.status(403).json({ message: "Unauthorized" })
         }
 
         req.user = user
@@ -21,7 +21,7 @@ const verifyToken = (req, res, next) => {
         return;
 
     })
-    
+
 
 
 
