@@ -68,7 +68,7 @@ exports.login = async (req, res) => {
                 expiresIn: 86400 // 24 hours
             })
 
-            res.json({ success: true, message: 'logged in successfully', token })
+            res.json({ success: true, message: 'logged in successfully', token, user: loggedUser })
         }
 
 

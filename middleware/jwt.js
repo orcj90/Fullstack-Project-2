@@ -11,7 +11,7 @@ const verifyToken = (req, res, next) => {
         })
     }
 
-    const user = jwt.verify(token, config.secret, (err, user) => {
+    jwt.verify(token, config.secret, (err, user) => {
         if (err) {
             return res.status(403).json({ message: "Unauthorized" })
         }

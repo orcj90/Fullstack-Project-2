@@ -13,13 +13,13 @@ async function findAllProducts(req, res) {
 }
 
 async function findProductById(req, res) {
-    const id = req.params.id
-
+    const productId = req.params.id
+    // console.log(productId)
     try {
-        const product = await Product.findOne({ id })
-
+        const product = await Product.findById(productId)
+        // console.log(product)
         if (product === null)
-            return res.json({ message: `Product with the id:${id} not found` })
+            return res.json({ message: `Product with the id:${productId} not found` })
 
         res.json(product);
     } catch (error) {
